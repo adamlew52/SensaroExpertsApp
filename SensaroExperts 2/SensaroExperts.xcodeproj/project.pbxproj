@@ -7,14 +7,14 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		AA000001 /* SensaroExpertsApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA100001; };
-		AA000002 /* Models.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA100002; };
-		AA000003 /* ArticlesData.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA100003; };
-		AA000004 /* ArticleViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA100004; };
-		AA000005 /* RootView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA100005; };
-		AA000006 /* ArticleDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA100006; };
-		AA000007 /* SearchBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA100007; };
-		AA000008 /* FilterSheetView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA100008; };
+		AA000001 /* SensaroExpertsApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA100001 /* SensaroExpertsApp.swift */; };
+		AA000002 /* Models.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA100002 /* Models.swift */; };
+		AA000003 /* ArticlesData.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA100003 /* ArticlesData.swift */; };
+		AA000004 /* ArticleViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA100004 /* ArticleViewModel.swift */; };
+		AA000005 /* RootView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA100005 /* RootView.swift */; };
+		AA000006 /* ArticleDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA100006 /* ArticleDetailView.swift */; };
+		AA000007 /* SearchBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA100007 /* SearchBar.swift */; };
+		AA000008 /* FilterSheetView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA100008 /* FilterSheetView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -34,7 +34,8 @@
 		AABUILD01 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
-			files = ();
+			files = (
+			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
@@ -42,22 +43,33 @@
 /* Begin PBXGroup section */
 		AAGROUP00 = {
 			isa = PBXGroup;
-			children = (AAGROUP01, AAGROUP02);
+			children = (
+				AAGROUP01 /* SensaroExperts */,
+				AAGROUP02 /* Products */,
+			);
 			sourceTree = "<group>";
 		};
 		AAGROUP01 /* SensaroExperts */ = {
 			isa = PBXGroup;
 			children = (
-				AA100001, AA100002, AA100003, AA100004,
-				AA100005, AA100006, AA100007, AA100008,
-				AA100009,
+				AA100001 /* SensaroExpertsApp.swift */,
+				AA100002 /* Models.swift */,
+				AA100003 /* ArticlesData.swift */,
+				AA100004 /* ArticleViewModel.swift */,
+				AA100005 /* RootView.swift */,
+				AA100006 /* ArticleDetailView.swift */,
+				AA100007 /* SearchBar.swift */,
+				AA100008 /* FilterSheetView.swift */,
+				AA100009 /* Info.plist */,
 			);
 			path = SensaroExperts;
 			sourceTree = "<group>";
 		};
 		AAGROUP02 /* Products */ = {
 			isa = PBXGroup;
-			children = (AAPROD001);
+			children = (
+				AAPROD001 /* SensaroExperts.app */,
+			);
 			name = Products;
 			sourceTree = "<group>";
 		};
@@ -66,55 +78,77 @@
 /* Begin PBXNativeTarget section */
 		AATARGET1 /* SensaroExperts */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = AACONFLIST2;
-			buildPhases = (AABUILD00, AABUILD01, AABUILD02);
-			buildRules = ();
-			dependencies = ();
+			buildConfigurationList = AACONFLIST2 /* Build configuration list for PBXNativeTarget "SensaroExperts" */;
+			buildPhases = (
+				AABUILD00 /* Sources */,
+				AABUILD01 /* Frameworks */,
+				AABUILD02 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
 			name = SensaroExperts;
 			productName = SensaroExperts;
-			productReference = AAPROD001;
+			productReference = AAPROD001 /* SensaroExperts.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
-		AAPROJECT1 = {
+		AAPROJECT1 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
 				BuildIndependentTargetsInParallel = 1;
 				LastSwiftUpdateCheck = 1500;
 				LastUpgradeCheck = 1500;
-				TargetAttributes = { AATARGET1 = { CreatedOnToolsVersion = 15.0; }; };
+				TargetAttributes = {
+					AATARGET1 = {
+						CreatedOnToolsVersion = 15.0;
+					};
+				};
 			};
-			buildConfigurationList = AACONFLIST1;
+			buildConfigurationList = AACONFLIST1 /* Build configuration list for PBXProject "SensaroExperts" */;
 			compatibilityVersion = "Xcode 14.0";
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
-			knownRegions = (en, Base);
+			knownRegions = (
+				en,
+				Base,
+			);
 			mainGroup = AAGROUP00;
-			productRefGroup = AAGROUP02;
+			productRefGroup = AAGROUP02 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
-			targets = (AATARGET1);
+			targets = (
+				AATARGET1 /* SensaroExperts */,
+			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
-		AABUILD02 = {
+		AABUILD02 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
-			files = ();
+			files = (
+			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
-		AABUILD00 = {
+		AABUILD00 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				AA000001, AA000002, AA000003, AA000004,
-				AA000005, AA000006, AA000007, AA000008,
+				AA000001 /* SensaroExpertsApp.swift in Sources */,
+				AA000002 /* Models.swift in Sources */,
+				AA000003 /* ArticlesData.swift in Sources */,
+				AA000004 /* ArticleViewModel.swift in Sources */,
+				AA000005 /* RootView.swift in Sources */,
+				AA000006 /* ArticleDetailView.swift in Sources */,
+				AA000007 /* SearchBar.swift in Sources */,
+				AA000008 /* FilterSheetView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -130,7 +164,10 @@
 				DEBUG_INFORMATION_FORMAT = dwarf;
 				ENABLE_TESTABILITY = YES;
 				GCC_OPTIMIZATION_LEVEL = 0;
-				GCC_PREPROCESSOR_DEFINITIONS = ("DEBUG=1", "$(inherited)");
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
 				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
@@ -159,11 +196,15 @@
 			buildSettings = {
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 9HJ53KLL68;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = NO;
 				INFOPLIST_FILE = SensaroExperts/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
-				LD_RUNPATH_SEARCH_PATHS = ("$(inherited)", "@executable_path/Frameworks");
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.sensaro.experts;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -178,11 +219,15 @@
 			buildSettings = {
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 9HJ53KLL68;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = NO;
 				INFOPLIST_FILE = SensaroExperts/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
-				LD_RUNPATH_SEARCH_PATHS = ("$(inherited)", "@executable_path/Frameworks");
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.sensaro.experts;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -195,19 +240,25 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		AACONFLIST1 = {
+		AACONFLIST1 /* Build configuration list for PBXProject "SensaroExperts" */ = {
 			isa = XCConfigurationList;
-			buildConfigurations = (AACONF0001, AACONF0002);
+			buildConfigurations = (
+				AACONF0001 /* Debug */,
+				AACONF0002 /* Release */,
+			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		AACONFLIST2 = {
+		AACONFLIST2 /* Build configuration list for PBXNativeTarget "SensaroExperts" */ = {
 			isa = XCConfigurationList;
-			buildConfigurations = (AACONF0003, AACONF0004);
+			buildConfigurations = (
+				AACONF0003 /* Debug */,
+				AACONF0004 /* Release */,
+			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
-	rootObject = AAPROJECT1;
+	rootObject = AAPROJECT1 /* Project object */;
 }
