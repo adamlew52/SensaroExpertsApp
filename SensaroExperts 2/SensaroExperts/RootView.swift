@@ -17,9 +17,6 @@ struct RootView: View {
                 articleList
             }
             .ignoresSafeArea(edges: .bottom)
-            .navigationDestination(item: $selectedArticle) { article in
-                ArticleDetailView(article: article)
-            }
         }
         .sheet(isPresented: $showFilters) {
             FilterSheetView(viewModel: vm)
@@ -65,7 +62,6 @@ struct RootView: View {
     private var articleList: some View {
         ScrollView {
             LazyVStack(spacing: 0) {
-                // Result count header
                 HStack {
                     Text("\(vm.results.count) article\(vm.results.count == 1 ? "" : "s")")
                         .font(.caption)
@@ -87,9 +83,10 @@ struct RootView: View {
                     .padding(.top, 80)
                 } else {
                     ForEach(vm.results) { article in
-                        ArticleRow(article: article)
-                            .contentShape(Rectangle())
-                            .onTapGesture { selectedArticle = article }
+                        NavigationLink(destination: ArticleDetailView(article: article)) {
+                            ArticleRow(article: article)
+                        }
+                        .buttonStyle(.plain)
                         Divider().padding(.leading, 16)
                     }
                 }
@@ -113,7 +110,6 @@ struct ArticleRow: View {
                 .foregroundColor(.primary)
 
             HStack(spacing: 6) {
-                // State badge
                 Text(article.stateDisplay)
                     .font(.caption2).fontWeight(.bold)
                     .padding(.horizontal, 8).padding(.vertical, 3)
@@ -121,7 +117,6 @@ struct ArticleRow: View {
                     .foregroundColor(.green)
                     .clipShape(Capsule())
 
-                // Top keywords
                 ForEach(article.keywords.prefix(3), id: \.self) { kw in
                     Text(kw)
                         .font(.caption2)
@@ -134,6 +129,7 @@ struct ArticleRow: View {
         }
         .padding(.horizontal, 16)
         .padding(.vertical, 12)
+        .frame(maxWidth: .infinity, alignment: .leading)
         .background(Color(.systemBackground))
     }
 }
