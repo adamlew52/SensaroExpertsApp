@@ -2,7 +2,7 @@ import Foundation
 
 // MARK: - Article Model
 
-struct Article: Identifiable {
+struct Article: Identifiable, Hashable {
     let id = UUID()
     let state: String
     let topic: String
@@ -16,6 +16,15 @@ struct Article: Identifiable {
     }
 
     var stateDisplay: String { state.uppercased() }
+
+    // Hashable conformance
+    func hash(into hasher: inout Hasher) {
+        hasher.combine(id)
+    }
+
+    static func == (lhs: Article, rhs: Article) -> Bool {
+        lhs.id == rhs.id
+    }
 }
 
 // MARK: - Filters
@@ -59,24 +68,19 @@ enum ArticleSearch {
     ) -> [Article] {
         let term = query.trimmingCharacters(in: .whitespaces).lowercased()
 
-        // 1. Filter by state
         var results = articles.filter { art in
             if state != .all && art.state != state.queryValue { return false }
             if term.isEmpty { return true }
-            // keyword match (substring), title, state, topic
-            let kwMatch = art.keywords.contains { $0.lowercased().contains(term) }
+            let kwMatch    = art.keywords.contains { $0.lowercased().contains(term) }
             let titleMatch = art.title.lowercased().contains(term)
             let stateMatch = art.state.lowercased().contains(term)
             let topicMatch = art.topic.lowercased().contains(term)
             return kwMatch || titleMatch || stateMatch || topicMatch
         }
 
-        // 2. Sort
         switch sort {
         case .relevance:
-            results.sort { a, b in
-                relevanceScore(a, term: term) > relevanceScore(b, term: term)
-            }
+            results.sort { relevanceScore($0, term: term) > relevanceScore($1, term: term) }
         case .titleAZ:
             results.sort { $0.title.localizedCompare($1.title) == .orderedAscending }
         case .state:
@@ -91,9 +95,7 @@ enum ArticleSearch {
     private static func relevanceScore(_ article: Article, term: String) -> Int {
         if term.isEmpty { return article.totalMentions }
         var score = 0
-        for kw in article.keywords where kw.lowercased().contains(term) {
-            score += 3
-        }
+        for kw in article.keywords where kw.lowercased().contains(term) { score += 3 }
         if article.title.lowercased().contains(term) { score += 5 }
         if article.state.lowercased().contains(term) { score += 2 }
         return score
