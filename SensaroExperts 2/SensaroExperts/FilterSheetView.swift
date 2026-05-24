@@ -6,63 +6,85 @@ struct FilterSheetView: View {
 
     var body: some View {
         NavigationStack {
-            List {
-                Section {
-                    ForEach(StateFilter.allCases) { state in
-                        Button {
-                            viewModel.selectedState = state
-                        } label: {
-                            HStack {
-                                Image(systemName: state.icon)
-                                    .frame(width: 26)
-                                    .foregroundColor(.green)
-                                Text(state.rawValue).foregroundColor(.primary)
-                                Spacer()
-                                if viewModel.selectedState == state {
-                                    Image(systemName: "checkmark")
-                                        .foregroundColor(.green)
-                                        .fontWeight(.semibold)
+            ZStack {
+                Color.forestDeep.ignoresSafeArea()
+                List {
+                    Section {
+                        ForEach(StateFilter.allCases) { state in
+                            Button {
+                                viewModel.selectedState = state
+                            } label: {
+                                HStack {
+                                    Image(systemName: state.icon)
+                                        .frame(width: 26)
+                                        .foregroundColor(.pine)
+                                    Text(state.rawValue)
+                                        .foregroundColor(.textPrimary)
+                                    Spacer()
+                                    if viewModel.selectedState == state {
+                                        Image(systemName: "checkmark")
+                                            .foregroundColor(.pine)
+                                            .fontWeight(.semibold)
+                                    }
                                 }
                             }
+                            .listRowBackground(Color.forestDark)
                         }
+                    } header: {
+                        Label("Filter by State", systemImage: "mappin.circle")
+                            .foregroundColor(.textMuted)
                     }
-                } header: { Label("Filter by State", systemImage: "mappin.circle") }
 
-                Section {
-                    ForEach(SortOrder.allCases) { order in
-                        Button {
-                            viewModel.sortOrder = order
-                        } label: {
-                            HStack {
-                                Text(order.rawValue).foregroundColor(.primary)
-                                Spacer()
-                                if viewModel.sortOrder == order {
-                                    Image(systemName: "checkmark")
-                                        .foregroundColor(.green)
-                                        .fontWeight(.semibold)
+                    Section {
+                        ForEach(SortOrder.allCases) { order in
+                            Button {
+                                viewModel.sortOrder = order
+                            } label: {
+                                HStack {
+                                    Text(order.rawValue)
+                                        .foregroundColor(.textPrimary)
+                                    Spacer()
+                                    if viewModel.sortOrder == order {
+                                        Image(systemName: "checkmark")
+                                            .foregroundColor(.pine)
+                                            .fontWeight(.semibold)
+                                    }
                                 }
                             }
+                            .listRowBackground(Color.forestDark)
                         }
+                    } header: {
+                        Label("Sort by", systemImage: "arrow.up.arrow.down")
+                            .foregroundColor(.textMuted)
                     }
-                } header: { Label("Sort by", systemImage: "arrow.up.arrow.down") }
 
-                Section {
-                    Button(role: .destructive) {
-                        viewModel.resetFilters()
-                        dismiss()
-                    } label: {
-                        HStack { Spacer(); Text("Reset All Filters"); Spacer() }
+                    Section {
+                        Button(role: .destructive) {
+                            viewModel.resetFilters()
+                            dismiss()
+                        } label: {
+                            HStack {
+                                Spacer()
+                                Text("Reset All Filters")
+                                Spacer()
+                            }
+                        }
+                        .listRowBackground(Color.forestDark)
                     }
                 }
+                .scrollContentBackground(.hidden)
             }
             .navigationTitle("Filters")
             .navigationBarTitleDisplayMode(.inline)
+            .toolbarColorScheme(.dark, for: .navigationBar)
             .toolbar {
                 ToolbarItem(placement: .confirmationAction) {
                     Button("Done") { dismiss() }
-                        .fontWeight(.semibold).foregroundColor(.green)
+                        .fontWeight(.semibold)
+                        .foregroundColor(.pine)
                 }
             }
         }
+        .colorScheme(.dark)
     }
 }

@@ -1,7 +1,6 @@
 import SwiftUI
 import WebKit
 
-// Opens the real article URL in a WKWebView
 struct ArticleDetailView: View {
     let article: Article
     @State private var isLoading = true
@@ -14,11 +13,14 @@ struct ArticleDetailView: View {
             if isLoading {
                 ProgressView()
                     .progressViewStyle(.linear)
-                    .tint(.green)
+                    .tint(.pine)
             }
         }
         .navigationTitle(article.title)
         .navigationBarTitleDisplayMode(.inline)
+        .toolbarBackground(Color.forestDeep, for: .navigationBar)
+        .toolbarBackground(.visible, for: .navigationBar)
+        .toolbarColorScheme(.dark, for: .navigationBar)
         .toolbar {
             ToolbarItem(placement: .navigationBarTrailing) {
                 if let url = article.articleURL {
@@ -31,7 +33,7 @@ struct ArticleDetailView: View {
     }
 }
 
-// MARK: - Minimal WKWebView wrapper (detail only, no nav bar needed)
+// MARK: - WKWebView wrapper
 
 struct WebReader: UIViewRepresentable {
     let url: URL?
